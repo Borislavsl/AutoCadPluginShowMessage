@@ -75,7 +75,7 @@ namespace AutoCADpluginShowMessage
             this.ClientSize = new Size(408, 86);
             this.Controls.AddRange(new Control[] { _okButton, _label });
             this.Name = "Form1";
-            this.Text = "The message shown in AutoCad";
+            this.Text = "Plugin message shown in AutoCad";
             this.ResumeLayout(false);
         }
     }

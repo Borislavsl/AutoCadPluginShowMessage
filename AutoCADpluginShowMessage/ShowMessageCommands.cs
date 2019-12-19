@@ -10,7 +10,7 @@ namespace AutoCADpluginShowMessage
         [CommandMethod("SHOW")]
         public void ShowCommand()
         {
-            Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor.WriteMessage("\nShow Message!\n");
+            Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor.WriteMessage("\nPlugin Message!\n");
         }
 
         // Defines a command which displays a Windows form
@@ -21,7 +21,7 @@ namespace AutoCADpluginShowMessage
             Autodesk.AutoCAD.ApplicationServices.Application.ShowModalDialog(dlg);
         }
 
-        // Defines a command which adds a 'Show Text' MText object to Model Space
+        // Defines a command which adds a 'Plugin Text' MText object to Model Space
         [CommandMethod("ASDK", "SHOWTEXT", CommandFlags.Modal)]
         public void ShowTextCommand()
         {
@@ -35,7 +35,7 @@ namespace AutoCADpluginShowMessage
             {
                 // Create new mtext and set text
                 var text = new MText();
-                text.Contents = "Show Text";
+                text.Contents = "Plugin Text";
 
                 // Append entity to model space
                 var blockTable = transaction.GetObject(database.BlockTableId, OpenMode.ForRead) as BlockTable;

@@ -25,7 +25,7 @@ namespace AutoCADpluginShowMessage
             AcadToolbarItem tbBut1 = showMessageToolbar.AddToolbarButton(1, "ShowForm", "Show Message- ShowForm command", "_ShowForm ");
             tbBut1.SetBitmaps(button1Path, button1Path);
 
-            AcadToolbarItem tbBut2 = showMessageToolbar.AddToolbarButton(2, "ShowText", "Show Message - Show command", "_SHOWTEXT ");
+            AcadToolbarItem tbBut2 = showMessageToolbar.AddToolbarButton(2, "ShowText", "Show Message - ShowText command", "_SHOWTEXT ");
             tbBut2.SetBitmaps(button0Path, button0Path);
         }
 

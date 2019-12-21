@@ -3,20 +3,20 @@ using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace AutoCADpluginShowMessage
+namespace ShowMessageCommands
 {
     public partial class ShowMessageForm : Form
     {
         public ShowMessageForm() : base()
-        {            
+        {
             InitializeComponent();
         }
-        
+
         protected override void Dispose(bool disposing)
-        {         
+        {
             base.Dispose(disposing);
-        }       
-        
+        }
+
         private Label _label;
 
         internal Label Label
@@ -30,7 +30,7 @@ namespace AutoCADpluginShowMessage
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                _label = value;             
+                _label = value;
             }
         }
 
@@ -47,7 +47,7 @@ namespace AutoCADpluginShowMessage
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                _okButton = value;                
+                _okButton = value;
             }
         }
 
@@ -70,7 +70,7 @@ namespace AutoCADpluginShowMessage
             _okButton.Name = "OkButton";
             _okButton.TabIndex = 1;
             _okButton.Text = "Ok";
-             
+
             this.AutoScaleBaseSize = new Size(5, 13);
             this.ClientSize = new Size(408, 86);
             this.Controls.AddRange(new Control[] { _okButton, _label });

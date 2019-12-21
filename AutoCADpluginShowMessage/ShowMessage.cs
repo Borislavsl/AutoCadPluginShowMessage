@@ -1,8 +1,10 @@
-﻿using Autodesk.AutoCAD.Runtime;
-using Autodesk.AutoCAD.Interop;
+﻿using System;
+using Autodesk.AutoCAD.Runtime;
+using Autodesk.AutoCAD.EditorInput;
+using Autodesk.AutoCAD.Customization;
+using MgdAcApplication = Autodesk.AutoCAD.ApplicationServices.Core.Application;
 
 [assembly: ExtensionApplication(typeof(AutoCADpluginShowMessage.ShowMessageApp))]
-[assembly: CommandClass(typeof(AutoCADpluginShowMessage.ShowMessageCommands))]
 
 namespace AutoCADpluginShowMessage
 {
@@ -10,23 +12,78 @@ namespace AutoCADpluginShowMessage
     {
         public void Initialize()
         {
-            // Create an AutoCAD tool bar with 3 buttons linked to 3 commands defined in ShowMessageCommands class
+            Editor editor = MgdAcApplication.DocumentManager.MdiActiveDocument.Editor;
+            try
+            {
+                string smallBitmapFileName = "autocad.png";
 
-            string bitmapPath = Utils.GetResourceBitmapPath();
-            var button0Path = bitmapPath + @"\tbBut0.bmp";
-            var button1Path = bitmapPath + @"\tbBut1.bmp";
+                var buttons = new ShowMessageButton[] { new ShowMessageButton("Message Box", "SHOWBOXTEXT",    smallBitmapFileName, "messagebox.webp", "Opens a Windows form"),
+                                                    new ShowMessageButton("Prompt",          "SHOWPROMPTTEXT", smallBitmapFileName, "commandline.png", "Prompts text on command line"),
+                                                    new ShowMessageButton("Model Space",     "SHOWMODELTEXT",  smallBitmapFileName, "modelspace.jpg",  "Add text to model space")
+                                                      };
 
-            var acadApp = Autodesk.AutoCAD.ApplicationServices.Application.AcadApplication as AcadApplication;
-            AcadToolbar showMessageToolbar = acadApp.MenuGroups.Item(0).Toolbars.Add("Show Message");
+                RibbonPanelSource panelSrc = GetRibbonPanel("ID_ADDINSTAB", "ShowMessagePlugin");
+                panelSrc.Text = "Show Message";
+                panelSrc.Name = panelSrc.Text;
 
-            AcadToolbarItem tbBut0 = showMessageToolbar.AddToolbarButton(0, "Show", "Show Message - Show command", "_SHOW ");
-            tbBut0.SetBitmaps(button0Path, button0Path);
+                var firstRow = new RibbonRow();
+                panelSrc.Items.Clear();
+                panelSrc.Items.Add(firstRow);
 
-            AcadToolbarItem tbBut1 = showMessageToolbar.AddToolbarButton(1, "ShowForm", "Show Message- ShowForm command", "_ShowForm ");
-            tbBut1.SetBitmaps(button1Path, button1Path);
+                var splitButton = new RibbonSplitButton(firstRow);
+                splitButton.ButtonStyle = RibbonButtonStyle.LargeWithText;
+                firstRow.Items.Add(splitButton);
 
-            AcadToolbarItem tbBut2 = showMessageToolbar.AddToolbarButton(2, "ShowText", "Show Message - ShowText command", "_SHOWTEXT ");
-            tbBut2.SetBitmaps(button0Path, button0Path);
+                CustomizationSection custSection = panelSrc.CustomizationSection;
+                MacroGroup macroGroup = custSection.MenuGroup.MacroGroups[0];
+
+                foreach (ShowMessageButton button in buttons)
+                    AddCommandButton(macroGroup, splitButton, button.Text, button.Command, button.SmallBitmapPath, button.LargeBitmapPath, button.Tooltip);
+
+                custSection.Save();
+            }
+            catch (System.Exception ex)
+            {
+                editor.WriteMessage(Environment.NewLine + ex.Message);
+            }
+        }
+
+        private RibbonPanelSource GetRibbonPanel(string tabAlias, string panelAlias)
+        {
+            var fileName = MgdAcApplication.GetSystemVariable("MENUNAME") as string;
+            var custSect = new CustomizationSection(fileName);
+            RibbonRoot ribbonRoot = custSect.MenuGroup.RibbonRoot;
+
+            RibbonPanelSource ribbonPanel = ribbonRoot.FindPanelWithAlias(panelAlias);
+            if (ribbonPanel != null)
+                throw new System.Exception("Show Message Ribbon Panel already is added." + Environment.NewLine +
+                                           "Please reset the corresponding settings or NETLOAD ShowMessageCommans.dll");
+
+            ribbonPanel = new RibbonPanelSource(ribbonRoot);
+            ribbonPanel.Aliases.Add(panelAlias);
+            ribbonRoot.RibbonPanelSources.Add(ribbonPanel);
+
+            RibbonTabSource tab = ribbonRoot.FindTabWithAlias(tabAlias);
+            var panelRef = new RibbonPanelSourceReference(tab);
+            panelRef.PanelId = ribbonPanel.ElementID;
+            tab.Items.Add(panelRef);
+
+            return ribbonPanel;
+        }
+
+        private void AddCommandButton(MacroGroup macroGroup, RibbonSplitButton splitButton, string buttonText, string command, string smallBitmapPath, string largeBitmapPath, string toolTip)
+        {
+            var button = new RibbonCommandButton(splitButton);
+            button.Text = buttonText;
+
+
+            MenuMacro menuMac = macroGroup.CreateMenuMacro(command + "_Macro", "^C^C" + command, command + "_Tag", command + "_Help", MacroType.Any, smallBitmapPath, largeBitmapPath, command + "_Label_Id");
+            button.MacroID = menuMac.ElementID;
+
+            button.ButtonStyle = RibbonButtonStyle.SmallWithoutText;
+            button.KeyTip = buttonText + " Key Tip";
+            button.TooltipTitle = toolTip;
+            splitButton.Items.Add(button);
         }
 
         public void Terminate()

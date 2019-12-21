@@ -1,32 +1,44 @@
-﻿using System.Windows.Forms;
+﻿using System;
 using Autodesk.AutoCAD.Runtime;
 using Autodesk.AutoCAD.DatabaseServices;
+using Autodesk.AutoCAD.EditorInput;
+using MgdAcApplication = Autodesk.AutoCAD.ApplicationServices.Core.Application;
 
-namespace AutoCADpluginShowMessage
+namespace ShowMessageCommands
 {
-    public class ShowMessageCommands
+    public class Commands
     {
-        // Defines a command which prompt a message on the AutoCAD command line
-        [CommandMethod("SHOW")]
-        public void ShowCommand()
-        {
-            Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor.WriteMessage("\nPlugin Message!\n");
-        }
-
         // Defines a command which displays a Windows form
-        [CommandMethod("SHOWFORM")]
+        [CommandMethod("SHOWBOXTEXT")]
         public void ShowFormCommand()
         {
-            var dlg = new ShowMessageForm();
-            Autodesk.AutoCAD.ApplicationServices.Application.ShowModalDialog(dlg);
+            Editor editor = MgdAcApplication.DocumentManager.MdiActiveDocument.Editor;
+
+            try
+            {
+                var dlg = new ShowMessageForm();
+                Autodesk.AutoCAD.ApplicationServices.Application.ShowModalDialog(dlg);
+            }
+            catch (System.Exception ex)
+            {
+                editor.WriteMessage(Environment.NewLine + "Error in Show Box message: " + ex.Message);
+            }
+        }
+
+        // Defines a command which prompt a message on the AutoCAD command line
+        [CommandMethod("SHOWPROMPTTEXT")]
+        public void ShowCommand()
+        {
+            MgdAcApplication.DocumentManager.MdiActiveDocument.Editor.WriteMessage("\nPlugin Message!\n");
         }
 
         // Defines a command which adds a 'Plugin Text' MText object to Model Space
-        [CommandMethod("ASDK", "SHOWTEXT", CommandFlags.Modal)]
+        [CommandMethod("ASDK", "SHOWMODELTEXT", CommandFlags.Modal)]
         public void ShowTextCommand()
         {
             // ObjectARX generally reports errors through return values.
             // .NET uses exceptions 
+            Editor editor = MgdAcApplication.DocumentManager.MdiActiveDocument.Editor;
 
             Database database = HostApplicationServices.WorkingDatabase;
             Transaction transaction = database.TransactionManager.StartTransaction();
@@ -46,9 +58,9 @@ namespace AutoCADpluginShowMessage
                 transaction.AddNewlyCreatedDBObject(text, true);
                 transaction.Commit();
             }
-            catch
+            catch (System.Exception ex)
             {
-                MessageBox.Show("Error in Show Text message");
+                editor.WriteMessage(Environment.NewLine + "Error in Show Text message: " + ex.Message);
             }
             finally
             {

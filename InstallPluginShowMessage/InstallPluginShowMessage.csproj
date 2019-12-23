@@ -10,8 +10,8 @@
     <ProjectGuid>{08B99F2D-EE14-4B25-863F-E6AE7A62A026}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AutoCADpluginShowMessage</RootNamespace>
-    <AssemblyName>AutoCADpluginShowMessage</AssemblyName>
+    <RootNamespace>InstallPluginShowMessage</RootNamespace>
+    <AssemblyName>InstallPluginShowMessage</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -62,24 +62,13 @@
       <HintPath>C:\Program Files\Autodesk\AutoCAD 2020\AcCui.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acdbmgd, Version=23.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="AcDbMgd, Version=23.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Autodesk\AutoCAD 2020\acdbmgd.dll</HintPath>
+      <HintPath>C:\Autodesk\ObjectARX_for_AutoCAD_2020_Win_64_bit\inc\AcDbMgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AcMgd, Version=23.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <Private>False</Private>
-    </Reference>
-    <Reference Include="AdWindows, Version=2018.11.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Autodesk\AutoCAD 2020\AdWindows.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Autodesk.AutoCAD.Interop, Version=23.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Autodesk.AutoCAD.Interop.Common, Version=23.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <!--ACA References Begin-->
     <!--ACA Refences End-->
@@ -87,6 +76,8 @@
     <!--AME Reference End-->
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -96,6 +87,7 @@
     <Folder Include="Resources\Bitmaps\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ShowMessageCommands.cs" />
     <Compile Include="ShowMessage.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -104,6 +96,9 @@
     <Compile Include="ShowMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShowMessageButton.cs" />
+    <Compile Include="ShowMessageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>

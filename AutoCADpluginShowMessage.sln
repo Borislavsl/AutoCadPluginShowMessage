@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.960
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoCADpluginShowMessage", "AutoCADpluginShowMessage\AutoCADpluginShowMessage.csproj", "{08B99F2D-EE14-4B25-863F-E6AE7A62A026}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowMessageCommands", "ShowMessageCommands\ShowMessageCommands.csproj", "{0DD690AB-8D14-4BDB-8206-3F7198464DBF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstallPluginShowMessage", "InstallPluginShowMessage\InstallPluginShowMessage.csproj", "{08B99F2D-EE14-4B25-863F-E6AE7A62A026}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{08B99F2D-EE14-4B25-863F-E6AE7A62A026}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08B99F2D-EE14-4B25-863F-E6AE7A62A026}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08B99F2D-EE14-4B25-863F-E6AE7A62A026}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0DD690AB-8D14-4BDB-8206-3F7198464DBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0DD690AB-8D14-4BDB-8206-3F7198464DBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0DD690AB-8D14-4BDB-8206-3F7198464DBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0DD690AB-8D14-4BDB-8206-3F7198464DBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

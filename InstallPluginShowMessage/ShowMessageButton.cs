@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace AutoCADpluginShowMessage
+namespace InstallPluginShowMessage
 {
     public class ShowMessageButton
     {

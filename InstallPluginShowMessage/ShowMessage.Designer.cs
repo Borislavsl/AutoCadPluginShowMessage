@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AutoCADpluginShowMessage {
+namespace InstallPluginShowMessage {
     using System;
     
     

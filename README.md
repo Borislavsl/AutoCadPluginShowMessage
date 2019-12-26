@@ -22,7 +22,7 @@ To uninstall the plugin, start UninstallShowMessagePlugin project..
 
 In Autocad,  open a new drawing.  In the command line enter NETLOAD and
 select the UninstallShowMessagePlugin.dll  from the folder ......\AutoCadShowMessagePlugin\UninstallShowMessagePlugin\bin\debug.
-The %ProgramData%\Autodesk\ApplicationPlugins\ShowMessagePlugin.bundle folder, the panel with three buttons and the correcsponding macros are removed.  In this way the whole plugin is uninstalled.
+The %ProgramData%\Autodesk\ApplicationPlugins\ShowMessagePlugin.bundle folder, the panel with three buttons and the corresponding macros are removed.  In this way the whole plugin is uninstalled.
 
 
 

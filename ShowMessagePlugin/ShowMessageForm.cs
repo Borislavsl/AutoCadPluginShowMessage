@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace InstallPluginShowMessage
+namespace ShowMessagePlugin
 {
     public partial class ShowMessageForm : Form
     {

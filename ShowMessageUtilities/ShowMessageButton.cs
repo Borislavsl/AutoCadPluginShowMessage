@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace InstallPluginShowMessage
+namespace ShowMessageUtilities
 {
     public class ShowMessageButton
     {
@@ -12,7 +12,7 @@ namespace InstallPluginShowMessage
 
         public ShowMessageButton(string text, string command, string smallBitmapFileName, string largeBitmapFileName, string tooltip)
         {
-            string bitmapPath = Utils.GetResourceBitmapPath();
+            string bitmapPath = Utils.GetPluginResourceDir();
 
             Text = text;
             Command = command;

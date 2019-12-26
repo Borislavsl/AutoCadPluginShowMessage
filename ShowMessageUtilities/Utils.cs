@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 
-namespace InstallPluginShowMessage
+namespace ShowMessageUtilities
 {
-    public static class Utils
+    public class Utils
     {
-        public const string KEY_INST  = "Install";
+        public const string KEY_INST = "Install";
         public const string KEY_ERROR = "Error";
         public const string KEY_ADDED = "Added";
         public const string KEY_UNINS = "Uninstall";
@@ -26,17 +25,15 @@ namespace InstallPluginShowMessage
                                                                         { KEY_REMOV, Environment.NewLine +"Show Message Ribbon Panel is already removed." + Environment.NewLine +
                                                                                  "Run NETLOAD command and select InstallPluginShowMessage.dll to install it." },
 
-                                                                        { KEY_ERROR, Environment.NewLine +"Error occurred: " },                                                                        
+                                                                        { KEY_ERROR, Environment.NewLine +"Error occurred: " },
                                                                     };
-        public static string GetResourceBitmapPath()
-        {
-            var uri = new System.Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath;
-            var projectFolder = new DirectoryInfo(uri).Parent.Parent.Parent.FullName;
-            var bitmapFolder = Path.Combine(projectFolder, "Resources", "Bitmaps");
 
-            return bitmapFolder;
+        public static string GetPluginResourceDir()
+        {
+            string commonAppData = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
+            return Path.Combine(commonAppData, "Autodesk", "ApplicationPlugins", "ShowMessagePlugin.bundle", "Contents", "Resources");
         }
-        
+
         public static ShowMessageButton[] GetShowMessageButtons()
         {
             string smallBitmapFileName = "autocad.png";
@@ -46,6 +43,6 @@ namespace InstallPluginShowMessage
                                                     new ShowMessageButton("Model Space",     "SHOWMODELTEXT",  smallBitmapFileName, "modelspace.jpg",  "Add text to model space")
                                                       };
             return buttons;
-        }     
+        }
     }
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace InstallPluginShowMessage {
+namespace ShowMessagePlugin {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace InstallPluginShowMessage {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AutoCADpluginMessageBox.ShowMessage", typeof(ShowMessage).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("InstallPluginShowMessage.ShowMessageCreatePlugin", typeof(ShowMessageCreatePlugin).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

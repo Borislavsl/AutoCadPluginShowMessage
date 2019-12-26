@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationPackage SchemaVersion="1.0" ProductType="Application" Name="ShowMessagePlugin" AppVersion="1.0" Description="ShowMessage, Add three command buttons to Add-ins panel"
+		 Author="Borislav Slavov" HelpFile="" ProductCode="{xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx}" FriendlyVersion="1.0" SupportedLocales="Enu" AutodeskProduct="AutoCAD">
+  <CompanyDetails Name="Nemetschek Bulgaria" Phone=" "  Url="https://nemetschek.bg" Email="bslavov@nemetschek.bg" />
+  <Components Description="Main">
+    <RuntimeRequirements SupportPath="./Contents" OS="Win32|Win64" Platform="AutoCAD*" SeriesMin="R19.0" SeriesMax="R23.1" />
+    <ComponentEntry AppName="ShowMessagePlugin" Version="1.0" ModuleName="./Contents/ShowMessagePlugin.dll" 
+   		 AppDescription="Add three command buttons to Add-ins panel" LoadOnAppearance="True" LoadOnAutoCADStartup="True" LoadOnCommandInvocation="True">
+    </ComponentEntry>
+  </Components>
+</ApplicationPackage>

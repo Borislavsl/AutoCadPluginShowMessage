@@ -2,20 +2,21 @@
 using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Customization;
-using static InstallPluginShowMessage.Utils;
+using static ShowMessageUtilities.Utils;
+using ShowMessageUtilities;
 
-[assembly: ExtensionApplication(typeof(InstallPluginShowMessage.ShowMessageApp))]
-[assembly: CommandClass(typeof(InstallPluginShowMessage.ShowMessageCommands))]
+[assembly: ExtensionApplication(typeof(ShowMessagePlugin.ShowMessageCreatePlugin))]
+[assembly: CommandClass(typeof(ShowMessagePlugin.ShowMessageCommands))]
 
-namespace InstallPluginShowMessage
+namespace ShowMessagePlugin
 {
-    public class ShowMessageApp : IExtensionApplication
+    public class ShowMessageCreatePlugin : IExtensionApplication
     {
         public void Initialize()
         {
             Editor editor = Application.DocumentManager.MdiActiveDocument.Editor;
             try
-            {                
+            {
                 RibbonPanelSource panelSource = AddRibbonPanel("ID_ADDINSTAB", PluginName);
                 if (panelSource == null)
                 {
@@ -33,7 +34,7 @@ namespace InstallPluginShowMessage
                     var splitButton = new RibbonSplitButton(firstRow);
                     splitButton.ButtonStyle = RibbonButtonStyle.LargeWithText;
                     firstRow.Items.Add(splitButton);
-
+                    
                     CustomizationSection custSection = panelSource.CustomizationSection;
                     MacroGroup macroGroup = custSection.MenuGroup.MacroGroups[0];
 
@@ -43,9 +44,9 @@ namespace InstallPluginShowMessage
 
                     custSection.Save();
 
-                    editor.WriteMessage(ProgramMessage[KEY_INST]);
-
                     Application.ReloadAllMenus();
+
+                    editor.WriteMessage(ProgramMessage[KEY_INST]);
                 }
             }
             catch (System.Exception ex)
@@ -62,7 +63,7 @@ namespace InstallPluginShowMessage
 
             RibbonPanelSource ribbonPanel = ribbonRoot.FindPanelWithAlias(panelAlias);
             if (ribbonPanel != null)
-                return null;                
+                return null;
 
             ribbonPanel = new RibbonPanelSource(ribbonRoot);
             ribbonPanel.Aliases.Add(panelAlias);

@@ -1,10 +1,31 @@
 # AutoCadShowMessagePlugin:
 
+Prerequisites
+
+1. Installed Autocad 2020
+
+2. Installed ObjectARX_for_AutoCAD_2020_Win_64_bit from https://www.autodesk.com/developer-network/platform-technologies/autocad/objectarx-license-download
+
+3. After open the solution in Visual Studio to both projects
+ShowMessagePlugin and
+UninstallShowMessagePlugin,
+
+the references to the following Dlls:
+AcCoreMgd
+AcCui
+AcDbMgd
+AcMgd,
+
+should be added from the folder: 
+C:\Autodesk\ObjectARX_for_AutoCAD_2020_Win_64_bit\inc\
+
+4. In Properties Debug section of both project Start external program should be checked with 
+C:\Program Files\Autodesk\AutoCAD 2020\acad.exe
 
 Start the project ShowMessagePlugin.
 
-It creates the plugin in %ProgramData%\Autodesk\ApplicationPlugins\ShowMessagePlugin.bundle folder,
-and starts Autocad. ShowMesssagePlugin.dll is automatically executed in %ProgramData%\Autodesk\ApplicationPlugins\ShowMessagePlugin.bundle\Contents folder.
+It creates the plugin in %ProgramData%\Autodesk\ApplicationPlugins\ShowMessagePlugin.bundle\ folder subfolders (by post build events),
+and starts Autocad. ShowMesssagePlugin.dll is automatically executed from %ProgramData%\Autodesk\ApplicationPlugins\ShowMessagePlugin.bundle\Contents\ folder.
 
 In Add-ins a new panel and three split buttons are created. Clicking on them, they execute respectively:
 
@@ -20,9 +41,9 @@ Close AutoCad.
 
 To uninstall the plugin, start UninstallShowMessagePlugin project..
 
-In Autocad,  open a new drawing.  In the command line enter NETLOAD and
+In Autocad,  open a New Drawing.  In the command line enter NETLOAD and
 select the UninstallShowMessagePlugin.dll  from the folder ......\AutoCadShowMessagePlugin\UninstallShowMessagePlugin\bin\debug.
-The %ProgramData%\Autodesk\ApplicationPlugins\ShowMessagePlugin.bundle folder, the panel with three buttons and the corresponding macros are removed.  In this way the whole plugin is uninstalled.
+The %ProgramData%\Autodesk\ApplicationPlugins\ShowMessagePlugin.bundle folder (it's deleted by pre-build events), the panel with three buttons and the corresponding macros are removed.  In this way, the whole plugin is uninstalled.
 
 
 

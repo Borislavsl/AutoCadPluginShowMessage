@@ -27,7 +27,7 @@ Start the project ShowMessagePlugin.
 
 It creates the plugin in %ProgramData%\Autodesk\ApplicationPlugins\ShowMessagePlugin.bundle\ folder and subfolders (by post build events), and starts Autocad. ShowMesssagePlugin.dll is automatically executed from %ProgramData%\Autodesk\ApplicationPlugins\ShowMessagePlugin.bundle\Contents\ folder.
 
-In Add-ins a new panel and three split buttons are created. Clicking on them, they execute respectively:
+In Add-ins a new panel containing a split button with three command buttons are added. Clicking on them, they execute respectively:
 
 - A command which displays a Windows form.
 

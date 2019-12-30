@@ -66,6 +66,7 @@
     <Reference Include="AcCui, Version=23.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\Autodesk\AutoCAD 2020\AcCui.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="acdbmgd, Version=23.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

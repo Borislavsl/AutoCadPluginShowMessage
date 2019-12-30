@@ -46,6 +46,9 @@ namespace ShowMessagePlugin
 
                     Application.ReloadAllMenus();
 
+                    var services = new Services();
+                    services.OpenNewDrawing("acad.dwt");
+
                     editor.WriteMessage(ProgramMessage[KEY_INST]);
                 }
             }
@@ -53,7 +56,7 @@ namespace ShowMessagePlugin
             {
                 editor.WriteMessage(ProgramMessage[KEY_ERROR] + ex.Message);
             }
-        }
+        }        
 
         private RibbonPanelSource AddRibbonPanel(string tabAlias, string panelAlias)
         {

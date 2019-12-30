@@ -18,7 +18,7 @@ namespace UninstallPluginShowMessage
             {
                 if (RemoveRibbonPanel("ID_ADDINSTAB", PluginName))
                 {
-                    Application.ReloadAllMenus();
+                    Application.ReloadAllMenus();                    
 
                     editor.WriteMessage(ProgramMessage[KEY_UNINS]);
                 }

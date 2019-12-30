@@ -4,7 +4,7 @@ using System.IO;
 
 namespace ShowMessageUtilities
 {
-    public class Utils
+    public static class Utils
     {
         public const string KEY_INST = "Install";
         public const string KEY_ERROR = "Error";
@@ -43,6 +43,6 @@ namespace ShowMessageUtilities
                                                     new ShowMessageButton("Model Space",     "SHOWMODELTEXT",  smallBitmapFileName, "modelspace.jpg",  "Add text to model space")
                                                       };
             return buttons;
-        }
+        }       
     }
 }

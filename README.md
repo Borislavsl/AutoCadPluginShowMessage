@@ -4,14 +4,14 @@ Prerequisites
 
 1. Installed Autocad 2020
 
-2. In Properties Debug section of both projects  "Start external program" should be checked with 
-C:\Program Files\Autodesk\AutoCAD 2020\acad.exe
+2. In Properties Debug section of both projects ShowMessagePlugin and UninstallShowMessagePlugin, 
+in "Start external program" should be checked with C:\Program Files\Autodesk\AutoCAD 2020\acad.exe
 
 Start the project ShowMessagePlugin.
 
 It creates the plugin in %ProgramData%\Autodesk\ApplicationPlugins\ShowMessagePlugin.bundle\ folder and subfolders (by post build events), and starts Autocad. ShowMesssagePlugin.dll is automatically executed from %ProgramData%\Autodesk\ApplicationPlugins\ShowMessagePlugin.bundle\Contents\ folder.
 
-A new panel containing a split button with three command buttons are added in Add-ins. Clicking on them, they execute respectively:
+A new panel Show Message, containing a split button with three command buttons are added in Add-ins. Clicking on them, they execute respectively:
 
 - A command which displays a Windows form.
 

@@ -3,9 +3,9 @@ using Autodesk.AutoCAD.DatabaseServices;
 
 namespace ShowMessageUtilities
 {
-    public class Services
+    public static class Services
     {
-        public void OpenNewDrawing(string strTemplatePath)
+        public static void OpenNewDrawing(string strTemplatePath)
         {
             DocumentCollection acDocMgr = Application.DocumentManager;
             Document acDoc = acDocMgr.Add(strTemplatePath);
@@ -13,7 +13,7 @@ namespace ShowMessageUtilities
             acDocMgr.MdiActiveDocument = acDoc;
         }
 
-        public void OpenLayout(string layoutName)
+        public static void OpenLayout(string layoutName)
         {
             // Reference the Layout Manager
             LayoutManager acLayoutMgr = LayoutManager.Current;

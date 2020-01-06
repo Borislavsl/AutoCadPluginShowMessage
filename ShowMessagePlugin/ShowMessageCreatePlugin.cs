@@ -44,10 +44,7 @@ namespace ShowMessagePlugin
 
                     custSection.Save();
 
-                    Application.ReloadAllMenus();
-
-                    var services = new Services();
-                    services.OpenNewDrawing("acad.dwt");
+                    Application.ReloadAllMenus();                  
 
                     editor.WriteMessage(ProgramMessage[KEY_INST]);
                 }

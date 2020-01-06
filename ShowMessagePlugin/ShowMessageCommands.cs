@@ -28,14 +28,14 @@ namespace ShowMessagePlugin
 
         // Defines a command which prompt a message on the AutoCAD command line
         [CommandMethod("SHOWPROMPTTEXT")]
-        public void ShowCommand()
+        public void ShowPromptTextCommand()
         {
             Application.DocumentManager.MdiActiveDocument.Editor.WriteMessage("\nPlugin Message!\n");
         }
 
         // Defines a command which adds a 'Plugin Text' MText object to Model Space
         [CommandMethod("ASDK", "SHOWMODELTEXT", CommandFlags.Modal)]
-        public void ShowTextCommand()
+        public void ShowModelTextCommand()
         {
             // ObjectARX generally reports errors through return values.
             // .NET uses exceptions 
@@ -59,9 +59,8 @@ namespace ShowMessagePlugin
                     transaction.AddNewlyCreatedDBObject(text, true);
                     transaction.Commit();
                 }
-
-                var services = new Services();
-                services.OpenLayout("Layout1");
+                
+                Services.OpenLayout("Layout1");
             }
             catch (System.Exception ex)
             {

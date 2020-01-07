@@ -5,7 +5,7 @@ Prerequisites
 1. Installed Autocad 2020
 
 2. In Properties Debug section of both projects ShowMessagePlugin and UninstallShowMessagePlugin, 
-in "Start external program" should be checked with C:\Program Files\Autodesk\AutoCAD 2020\acad.exe
+"Start external program" should be checked with C:\Program Files\Autodesk\AutoCAD 2020\acad.exe
 
 Start the project ShowMessagePlugin.
 
@@ -23,7 +23,7 @@ Try each of them.
 
 Close AutoCad.
 
-To uninstall the plugin, start UninstallShowMessagePlugin project..
+To uninstall the plugin, start UninstallShowMessagePlugin project. It starts Autocad.
 
 In Autocad,  open a New Drawing.  In the command line enter NETLOAD and
 select the UninstallShowMessagePlugin.dll  from the folder ......\AutoCadShowMessagePlugin\UninstallShowMessagePlugin\bin\debug.

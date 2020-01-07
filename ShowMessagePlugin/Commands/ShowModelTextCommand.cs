@@ -21,18 +21,7 @@ namespace ShowMessagePlugin.Commands
                 var text = new MText();
                 text.Contents = "Plugin Text";
 
-                Database database = HostApplicationServices.WorkingDatabase;
-                // Append entity to model space
-                using (Transaction transaction = database.TransactionManager.StartTransaction())
-                {
-                    var blockTable = transaction.GetObject(database.BlockTableId, OpenMode.ForRead) as BlockTable;
-                    var blockTableRecord = transaction.GetObject(blockTable[BlockTableRecord.ModelSpace], OpenMode.ForWrite) as BlockTableRecord;
-                    blockTableRecord.AppendEntity(text);
-
-                    // Add the text to the transaction, and commit the changes.
-                    transaction.AddNewlyCreatedDBObject(text, true);
-                    transaction.Commit();
-                }
+                AutocadAPI.AppendMTextToModelSpace(text);
 
                 AutocadAPI.OpenLayout("Layout1");
             }

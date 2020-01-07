@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Services\AutocadAPI.cs" />
+    <Compile Include="Services\AutocadAPIPanels.cs" />
     <Compile Include="Services\WindowsForm.cs">
       <SubType>Form</SubType>
     </Compile>

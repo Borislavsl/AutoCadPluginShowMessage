@@ -31,8 +31,8 @@ namespace ShowMessagePlugin
                     CustomizationSection custSection = panelSource.CustomizationSection;
                     MacroGroup macroGroup = custSection.MenuGroup.MacroGroups[0];
 
-                    ShowMessageButton[] buttons = GetShowMessageButtons();
-                    foreach (ShowMessageButton button in buttons)
+                    PluginCommandButton[] buttons = GetShowMessageButtons();
+                    foreach (PluginCommandButton button in buttons)
                         AutocadAPI.AddCommandButtonToRibbonSplitButton(macroGroup, splitButton, button.Text, button.Command, button.SmallBitmapPath, button.LargeBitmapPath, button.Tooltip);
 
                     custSection.Save();

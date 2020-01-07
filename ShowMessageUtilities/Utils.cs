@@ -34,14 +34,14 @@ namespace ShowMessageUtilities
             return Path.Combine(commonAppData, "Autodesk", "ApplicationPlugins", "ShowMessagePlugin.bundle", "Contents", "Resources");
         }
 
-        public static ShowMessageButton[] GetShowMessageButtons()
+        public static PluginCommandButton[] GetShowMessageButtons()
         {
             string smallBitmapFileName = "autocad.png";
 
-            var buttons = new ShowMessageButton[] { new ShowMessageButton("Windows Form", "SHOW_WINDOWS_FORM", smallBitmapFileName, "messagebox.webp", "Shows a Windows Form"),
-                                                    new ShowMessageButton("Prompt",       "SHOW_PROMPT_TEXT",  smallBitmapFileName, "commandline.png", "Prompts text on command line"),
-                                                    new ShowMessageButton("Model Space",  "SHOW_MODEL_TEXT",   smallBitmapFileName, "modelspace.jpg",  "Adds text to model space")
-                                                  };
+            var buttons = new PluginCommandButton[] { new PluginCommandButton("Windows Form", "SHOW_WINDOWS_FORM", smallBitmapFileName, "messagebox.webp", "Shows a Windows Form"),
+                                                      new PluginCommandButton("Prompt",       "SHOW_PROMPT_TEXT",  smallBitmapFileName, "commandline.png", "Prompts text on command line"),
+                                                      new PluginCommandButton("Model Space",  "SHOW_MODEL_TEXT",   smallBitmapFileName, "modelspace.jpg",  "Adds text to model space")
+                                                    };
             return buttons;
         }       
     }

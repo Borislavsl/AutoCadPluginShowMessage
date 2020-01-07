@@ -15,7 +15,9 @@ namespace UninstallPluginShowMessage
             Editor editor = Application.DocumentManager.MdiActiveDocument.Editor;
             try
             {
-                if (AutocadAPI.RemoveRibbonPanel("ID_ADDINSTAB", PluginName))
+                PluginCommandButton[] buttons = GetShowMessageButtons();
+
+                if (AutocadAPI.RemoveRibbonPanel("ID_ADDINSTAB", PluginName, buttons))
                 {
                     Application.ReloadAllMenus();                    
 

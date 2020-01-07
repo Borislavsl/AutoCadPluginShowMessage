@@ -5,6 +5,8 @@ namespace ShowMessageUtilities
 {
     public static partial class AutocadAPI
     {
+        #region Add Ribbon panel, split and command buttons
+
         public static RibbonPanelSource AddRibbonPanel(string tabAlias, string panelAlias, string panelText)
         {
             var fileName = Application.GetSystemVariable("MENUNAME") as string;
@@ -56,8 +58,12 @@ namespace ShowMessageUtilities
             splitButton.Items.Add(button);
         }
 
+        #endregion
 
-        public static bool RemoveRibbonPanel(string tabAlias, string panelAlias)
+
+        #region Remove Ribbon panel with its buttons and commands
+
+        public static bool RemoveRibbonPanel(string tabAlias, string panelAlias, PluginCommandButton[] buttons)
         {
             var fileName = Application.GetSystemVariable("MENUNAME") as string;
             var custSection = new CustomizationSection(fileName);
@@ -83,7 +89,7 @@ namespace ShowMessageUtilities
             RibbonTabSource tab = ribbonRoot.FindTabWithAlias(tabAlias);
             RemoveRibbonPanelSourceReference(tab, ribbonPanel.ElementID);
 
-            RemoveMacrosForShowMessageButtons(custSection);
+            RemoveMacrosOfCommandButtons(custSection, buttons);
 
             ribbonRoot.RibbonPanelSources.Remove(ribbonPanel);
             ribbonRoot.SetIsModified();
@@ -109,10 +115,8 @@ namespace ShowMessageUtilities
             tab.SetIsModified();
         }
 
-        private static void RemoveMacrosForShowMessageButtons(CustomizationSection custSection)
-        {
-            ShowMessageButton[] buttons = Utils.GetShowMessageButtons();
-
+        private static void RemoveMacrosOfCommandButtons(CustomizationSection custSection, PluginCommandButton[] buttons)
+        {        
             string macroNames = string.Empty;
             foreach (var button in buttons)
                 macroNames += button.Command + "_Macro ";
@@ -132,5 +136,7 @@ namespace ShowMessageUtilities
             }
             custSection.MenuGroup.MacroGroups[0].SetIsModified();
         }
+
+        #endregion
     }
 }

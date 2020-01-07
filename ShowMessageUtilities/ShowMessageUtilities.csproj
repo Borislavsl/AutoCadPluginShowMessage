@@ -64,7 +64,7 @@
     <Compile Include="Services\WindowsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ShowMessageButton.cs" />
+    <Compile Include="PluginCommandButton.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

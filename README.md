@@ -4,8 +4,9 @@ Prerequisites
 
 1. Installed Autocad 2020
 
-2. In Properties Debug section of both projects ShowMessagePlugin and UninstallShowMessagePlugin, 
-"Start external program" should be checked with C:\Program Files\Autodesk\AutoCAD 2020\acad.exe
+2. After installing the plugin, check in Properties Debug section of ShowMessagePlugin project the
+"Start external program" option to start C:\Program Files\Autodesk\AutoCAD 2020\acad.exe.
+Do the same with and UninstallShowMessagePlugin project.
 
 Start the project ShowMessagePlugin.
 

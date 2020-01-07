@@ -3,11 +3,11 @@ using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace ShowMessagePlugin
+namespace ShowMessageUtilities
 {
-    public partial class ShowMessageForm : Form
+    public partial class WindowsForm : Form
     {
-        public ShowMessageForm() : base()
+        public WindowsForm() : base()
         {
             InitializeComponent();
         }

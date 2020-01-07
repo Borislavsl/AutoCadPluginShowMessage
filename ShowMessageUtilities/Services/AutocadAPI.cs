@@ -3,7 +3,7 @@ using Autodesk.AutoCAD.DatabaseServices;
 
 namespace ShowMessageUtilities
 {
-    public static class Services
+    public static class AutocadAPI
     {
         public static void OpenNewDrawing(string strTemplatePath)
         {

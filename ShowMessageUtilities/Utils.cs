@@ -38,10 +38,10 @@ namespace ShowMessageUtilities
         {
             string smallBitmapFileName = "autocad.png";
 
-            var buttons = new ShowMessageButton[] { new ShowMessageButton("Message Box", "SHOWBOXTEXT",    smallBitmapFileName, "messagebox.webp", "Opens a Windows form"),
-                                                    new ShowMessageButton("Prompt",          "SHOWPROMPTTEXT", smallBitmapFileName, "commandline.png", "Prompts text on command line"),
-                                                    new ShowMessageButton("Model Space",     "SHOWMODELTEXT",  smallBitmapFileName, "modelspace.jpg",  "Add text to model space")
-                                                      };
+            var buttons = new ShowMessageButton[] { new ShowMessageButton("Windows Form", "SHOW_WINDOWS_FORM", smallBitmapFileName, "messagebox.webp", "Shows a Windows Form"),
+                                                    new ShowMessageButton("Prompt",       "SHOW_PROMPT_TEXT",  smallBitmapFileName, "commandline.png", "Prompts text on command line"),
+                                                    new ShowMessageButton("Model Space",  "SHOW_MODEL_TEXT",   smallBitmapFileName, "modelspace.jpg",  "Adds text to model space")
+                                                  };
             return buttons;
         }       
     }

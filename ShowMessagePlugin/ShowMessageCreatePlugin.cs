@@ -6,7 +6,9 @@ using static ShowMessageUtilities.Utils;
 using ShowMessageUtilities;
 
 [assembly: ExtensionApplication(typeof(ShowMessagePlugin.ShowMessageCreatePlugin))]
-[assembly: CommandClass(typeof(ShowMessagePlugin.ShowMessageCommands))]
+[assembly: CommandClass(typeof(ShowMessagePlugin.Commands.ShowWindowsFormCommand))]
+[assembly: CommandClass(typeof(ShowMessagePlugin.Commands.ShowPromptTextCommand))]
+[assembly: CommandClass(typeof(ShowMessagePlugin.Commands.ShowModelTextCommand))]
 
 namespace ShowMessagePlugin
 {
